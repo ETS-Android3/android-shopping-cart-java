@@ -10,8 +10,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moccha.shoppingcart.model.Item;
+import com.moccha.shoppingcart.model.ItemData;
+
+import java.util.ArrayList;
 
 public class MyOrderActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private ArrayList<Item> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,24 +33,14 @@ public class MyOrderActivity extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), CompleteOrderActivity.class);
             startActivity(i);
         });
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
 
-        String[] orderTitles = new String[Item.orderItems.length];
-        for (int i = 0; i < orderTitles.length; i++) {
-            orderTitles[i] = Item.orderItems[i].getName();
-        }
-        int[] orderPrices = new int[Item.orderItems.length];
-        for (int i = 0; i < orderPrices.length; i++) {
-            orderPrices[i] = Item.orderItems[i].getPrice();
-        }
-        int[] orderImages = new int[Item.orderItems.length];
-        for (int i = 0; i < orderImages.length; i++) {
-            orderImages[i] = Item.orderItems[i].getImg();
-        }
-        OrderAdapter adapter = new OrderAdapter(orderTitles, orderPrices, orderImages);
+        items.addAll(ItemData.getListOrder());
+        OrderAdapter adapter = new OrderAdapter(items);
         recyclerView.setAdapter(adapter);
     }
 }

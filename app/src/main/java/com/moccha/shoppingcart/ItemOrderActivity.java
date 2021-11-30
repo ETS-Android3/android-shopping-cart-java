@@ -2,6 +2,8 @@ package com.moccha.shoppingcart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.moccha.shoppingcart.model.Item;
+import com.moccha.shoppingcart.model.ItemData;
+
+import java.util.ArrayList;
 
 public class ItemOrderActivity extends AppCompatActivity {
 
@@ -34,10 +39,6 @@ public class ItemOrderActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MyOrderActivity.class));
         });
 
-        Button order = findViewById(R.id.orderBtn);
-        order.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "Order Successfully", Toast.LENGTH_SHORT).show());
-
-
         titleTv = (TextView) findViewById(R.id.item_title);
         priceTv = (TextView) findViewById(R.id.item_price);
         imageVw = (ImageView) findViewById(R.id.image_item);
@@ -49,5 +50,13 @@ public class ItemOrderActivity extends AppCompatActivity {
             priceTv.setText(String.format("RP %s", String.valueOf(item.getPrice())));
             imageVw.setImageDrawable(ContextCompat.getDrawable(this, item.getImg()));
         }
+
+        Button order = findViewById(R.id.orderBtn);
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ItemData.orders.add(new Item(item.getName(), item.getPrice(), item.getImg()));
+            }
+        });
     }
 }

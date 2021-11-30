@@ -7,6 +7,7 @@ import com.moccha.shoppingcart.R;
 import java.util.ArrayList;
 
 public class ItemData {
+    public static ArrayList<Item> orders = new ArrayList<>();
 
     @NonNull
     public static ArrayList<Item> getListDrink() {
@@ -41,4 +42,10 @@ public class ItemData {
         snacks.add(new Item("Cupcake", 16000, R.drawable.cupcakes));
         return snacks;
     }
+
+    @NonNull
+    public static ArrayList<Item> getListOrder() {
+        return orders;
+    }
+
 }

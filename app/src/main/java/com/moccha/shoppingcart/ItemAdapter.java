@@ -23,6 +23,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     interface Listener {
         void onClick(int position);
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
 

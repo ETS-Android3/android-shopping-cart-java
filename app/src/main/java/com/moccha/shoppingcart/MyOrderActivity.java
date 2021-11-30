@@ -2,11 +2,14 @@ package com.moccha.shoppingcart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.moccha.shoppingcart.model.Item;
 
 public class MyOrderActivity extends AppCompatActivity {
 
@@ -14,6 +17,11 @@ public class MyOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
+
+        ImageView back_btn = findViewById(R.id.back_button);
+        back_btn.setOnClickListener(v -> {
+            finish();
+        });
 
         LinearLayout completeOrder = findViewById(R.id.order_complete);
         completeOrder.setOnClickListener(v -> {

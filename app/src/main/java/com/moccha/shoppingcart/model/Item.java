@@ -1,6 +1,11 @@
-package com.moccha.shoppingcart;
+package com.moccha.shoppingcart.model;
 
-public class Item {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.moccha.shoppingcart.R;
+
+public class Item implements Parcelable {
     private String name;
     private int price, img;
 
@@ -9,6 +14,24 @@ public class Item {
         this.price = price;
         this.img = img;
     }
+
+    protected Item(Parcel in) {
+        name = in.readString();
+        price = in.readInt();
+        img = in.readInt();
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     public int getPrice() {
         return price;
@@ -55,4 +78,16 @@ public class Item {
             new Item("Mineral Water", 4000, R.drawable.mineral),
             new Item("Mango Juice", 8000, R.drawable.mango),
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(price);
+        dest.writeInt(img);
+    }
 }

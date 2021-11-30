@@ -47,8 +47,6 @@
                 android:contentDescription="@string/cart_icon"
                 android:src="@drawable/cart" />
         </LinearLayout>
-
-
     </RelativeLayout>
 
     <TextView
@@ -58,11 +56,24 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="@string/app_name"
+        android:text="Good Morning,"
         android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="Fernando"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:translationY="-14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView2"
@@ -72,14 +83,14 @@
         android:fontFamily="@font/poppins_medium"
         android:text="@string/main_menu"
         android:textSize="20sp"
+        android:translationY="-10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="558dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,10 +100,11 @@
         <androidx.gridlayout.widget.GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:rowCount="1"
-            app:columnCount="2"
+            android:translationY="-10dp"
             app:alignmentMode="alignMargins"
-            app:columnOrderPreserved="false">
+            app:columnCount="2"
+            app:columnOrderPreserved="false"
+            app:rowCount="1">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/drinks_menu"
@@ -128,8 +140,8 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="-20dp"
                         android:layout_marginBottom="-20dp"
-                        android:src="@drawable/drink"
-                        android:contentDescription="@string/drinks_image" />
+                        android:contentDescription="@string/drinks_image"
+                        android:src="@drawable/drink" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -167,8 +179,8 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="-20dp"
                         android:layout_marginBottom="-20dp"
-                        android:src="@drawable/snack"
-                        android:contentDescription="@string/snack_image" />
+                        android:contentDescription="@string/snack_image"
+                        android:src="@drawable/snack" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -206,8 +218,8 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="-20dp"
                         android:layout_marginBottom="-20dp"
-                        android:src="@drawable/food"
-                        android:contentDescription="@string/foods_image" />
+                        android:contentDescription="@string/foods_image"
+                        android:src="@drawable/food" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -245,8 +257,8 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="-20dp"
                         android:layout_marginBottom="-20dp"
-                        android:src="@drawable/topup"
-                        android:contentDescription="@string/top_up_image" />
+                        android:contentDescription="@string/top_up_image"
+                        android:src="@drawable/topup" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 

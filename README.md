@@ -8,9 +8,6 @@ A simple Shopping Cart Application project developed in Android Studio (Java) th
 The purpose of this project is to do some exercises and apply what I have learned from the development of the first Android, Book 3rd edition (Chapters 1-13). There is one feature that doesn't work properly: updating the total price after the user removes an item from the cart, and may be fixed later.
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [Android Studio](https://developer.android.com/docs)
 * [Java](https://www.oracle.com/java/)
 

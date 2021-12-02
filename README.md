@@ -1,7 +1,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![](shoppingcart.gif)
+![](shopping.gif)
 
 A simple Shopping Cart Application project developed in Android Studio (Java) that allows you to add items to cart, remove items to cart and display order checkout. In this project, I implemented OOP concepts and used multiple activities, layout (constraint, scroll, linear, and grid Layout), Intent, and RecyclerView components.
 

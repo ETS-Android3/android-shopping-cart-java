@@ -11,20 +11,20 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHolder> {
-    private String[] titles;
-    private int[] prices;
-    private int[] imageIds;
+import com.moccha.shoppingcart.model.Item;
 
-    public CompleteAdapter(String[] titles, int[] prices, int[] imageIds) {
-        this.titles = titles;
-        this.prices = prices;
-        this.imageIds = imageIds;
+import java.util.ArrayList;
+
+public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHolder> {
+    private ArrayList<Item> listItem;
+
+    public CompleteAdapter(ArrayList<Item> listItem) {
+        this.listItem = listItem;
     }
 
     @Override
     public int getItemCount() {
-        return titles.length;
+        return listItem.size();
     }
 
     @NonNull
@@ -36,15 +36,17 @@ public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CompleteAdapter.ViewHolder holder, int position) {
+        Item item = listItem.get(position);
+
         CardView cardView = holder.cardView;
         ImageView image_view = (ImageView) cardView.findViewById(R.id.image_item);
-        Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), imageIds[position]);
+        Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), item.getImg());
         image_view.setImageDrawable(drawable);
         TextView text_title = (TextView) cardView.findViewById(R.id.item_title);
         TextView text_price = (TextView) cardView.findViewById(R.id.item_price);
 
-        text_title.setText(titles[position]);
-        text_price.setText(String.format("Rp %s", String.valueOf(prices[position])));
+        text_title.setText(item.getName());
+        text_price.setText(String.format("Rp %s", String.valueOf(item.getPrice())));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

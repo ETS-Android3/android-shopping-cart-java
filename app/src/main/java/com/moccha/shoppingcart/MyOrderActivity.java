@@ -2,9 +2,13 @@ package com.moccha.shoppingcart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,15 +27,11 @@ public class MyOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
 
+        TextView totalPriceTv = findViewById(R.id.totalPriceTV);
+
         ImageView back_btn = findViewById(R.id.back_button);
         back_btn.setOnClickListener(v -> {
             finish();
-        });
-
-        LinearLayout completeOrder = findViewById(R.id.order_complete);
-        completeOrder.setOnClickListener(v -> {
-            Intent i = new Intent(getApplicationContext(), CompleteOrderActivity.class);
-            startActivity(i);
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
@@ -39,8 +39,29 @@ public class MyOrderActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
 
+        items.clear();
         items.addAll(ItemData.getListOrder());
         OrderAdapter adapter = new OrderAdapter(items);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        int total = grandTotal(ItemData.getListOrder());
+        totalPriceTv.setText("Total: Rp. " + String.valueOf(total));
+
+        LinearLayout completeOrder = findViewById(R.id.order_complete);
+        completeOrder.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), CompleteOrderActivity.class);
+            startActivity(i);
+        });
+    }
+
+    private int grandTotal(ArrayList<Item> items){
+
+        int totalPrice = 0;
+        for(int i = 0 ; i < items.size(); i++) {
+            totalPrice += items.get(i).getPrice();
+        }
+
+        return totalPrice;
     }
 }

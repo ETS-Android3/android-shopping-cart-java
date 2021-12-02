@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -42,6 +41,7 @@ public class ItemOrderActivity extends AppCompatActivity {
         titleTv = (TextView) findViewById(R.id.item_title);
         priceTv = (TextView) findViewById(R.id.item_price);
         imageVw = (ImageView) findViewById(R.id.image_item);
+        Button orderBtn = findViewById(R.id.orderBtn);
 
         Item item = getIntent().getParcelableExtra(ORDER_ITEM);
 
@@ -49,14 +49,12 @@ public class ItemOrderActivity extends AppCompatActivity {
             titleTv.setText(item.getName());
             priceTv.setText(String.format("RP %s", String.valueOf(item.getPrice())));
             imageVw.setImageDrawable(ContextCompat.getDrawable(this, item.getImg()));
+            orderBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ItemData.orders.add(new Item(item.getName(), item.getPrice(), item.getImg()));
+                }
+            });
         }
-
-        Button order = findViewById(R.id.orderBtn);
-        order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ItemData.orders.add(new Item(item.getName(), item.getPrice(), item.getImg()));
-            }
-        });
     }
 }

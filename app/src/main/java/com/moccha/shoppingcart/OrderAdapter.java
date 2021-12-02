@@ -1,7 +1,9 @@
 package com.moccha.shoppingcart;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moccha.shoppingcart.model.Item;
+import com.moccha.shoppingcart.model.ItemData;
 
 import java.util.ArrayList;
 
@@ -35,7 +38,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OrderAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OrderAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Item item = listItem.get(position);
 
         CardView cardView = holder.cardView;
@@ -47,6 +50,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
         text_title.setText(item.getName());
         text_price.setText(String.format("Rp %s", String.valueOf(item.getPrice())));
+
+        cardView.findViewById(R.id.removeBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listItem.remove(position);
+                notifyItemRemoved(position);
+                notifyItemChanged(position, listItem.size());
+                ItemData.orders.remove(position);
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

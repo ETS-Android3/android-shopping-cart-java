@@ -37,8 +37,8 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-* [@linkedIn](https://www.linkedin.com/in/fernandoptr/)
-* [@Instagram](https://www.instagram.com/fernandoptrr/)
-* [@Github](https://github.com/fernandoptrr)
+* [linkedIn](https://www.linkedin.com/in/fernandoptr/)
+* [Instagram](https://www.instagram.com/fernandoptrr/)
+* [Github](https://github.com/fernandoptrr)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
